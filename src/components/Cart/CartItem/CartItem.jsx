@@ -5,6 +5,7 @@ import useStyles from './styles';
 
 const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const classes = useStyles();
+  console.log(item)
 
   const handleUpdateCartQty = (lineItemId, newQuantity) => onUpdateCartQty(lineItemId, newQuantity);
 
@@ -20,10 +21,10 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
       <CardActions className={classes.cardActions}>
         <div className={classes.buttons}>
           <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.cartDetailID, item.cartQuantity - 1)}>-</Button>
-          <Typography>&nbsp;{item?.cartQuantity}&nbsp;</Typography>
+          <Typography>&nbsp;{item.cartQuantity}&nbsp;</Typography>
           <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.cartDetailID, item.cartQuantity + 1)}>+</Button>
         </div>
-        <Button className={classes.button} variant="contained" type="button" color='secondary' onClick={() =>{console.log("remove from cart from there weare printing",item); handleRemoveFromCart(item.cartDetailID)}}>Remove</Button>
+        <Button className={classes.button} variant="contained" type="button" color='secondary' onClick={() =>{console.log("remove from cart from there weare printing",item); handleRemoveFromCart(item?.cartDetailID)}}>Remove</Button>
       </CardActions>
     </Card>
   );

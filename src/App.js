@@ -17,7 +17,6 @@ import "./style.css";
 import Fiction from "./components/Fiction/Fiction";
 import Biography from "./components/Bio/Biography";
 import Register from "../src/components/Register/Register"
-import SignIn from "../src/components/SignIn/SignIn"
 import AddBook from "./components/AddBook/AddBook";
 import LogInPage from "../src/components/SignIn/SignIn";
 
@@ -41,7 +40,7 @@ const App = () => {
   };
 
   const fetchMangaProducts = async () => {
-    const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
+    //const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
 
     const data = await response.json();
     const filteredData = data.data.filter((item) => item.category.categoryID === 3);
@@ -50,7 +49,7 @@ const App = () => {
   };
 
   const fetchFeatureProducts = async () => {
-    const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
+   // const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
 
     const data = await response.json();
     const filteredData = data.data.filter((item) => item.category.categoryID === 1);
@@ -59,7 +58,7 @@ const App = () => {
   };
 
   const fetchFictionProducts = async () => {
-    const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
+    //const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
 
     const data = await response.json();
     const filteredData = data.data.filter((item) => item.category.categoryID === 1);
@@ -74,11 +73,10 @@ const App = () => {
   };
 
   const fetchBioProducts = async () => {
-    const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
+    //const response = await fetch('http://localhost:5121/api/books/GetAllBooks');
 
     const data = await response.json();
     const filteredData = data.data.filter((item) => item.category.categoryID === 4);
-    console.log(filteredData);
 
     setBioProducts(filteredData);
   };
@@ -259,14 +257,6 @@ const App = () => {
                 handleDrawerToggle={handleDrawerToggle}
               />
               <Switch>
-              <Route exact path="/login">
-                  <Register                    
-                  />
-                </Route>
-                <Route exact path="/signup">
-                  <LogInPage
-                  />
-                </Route>
                 <Route exact path="/">
                   <Products
                     products={products}
@@ -281,10 +271,6 @@ const App = () => {
                     onUpdateCartQty={handleUpdateCartQty}
                     onRemoveFromCart={handleRemoveFromCart}
                     onEmptyCart={handleEmptyCart}
-                  />
-                </Route>
-                <Route exact path="/addbook">
-                  <AddBook                    
                   />
                 </Route>
                 <Route path="/checkout" exact>
@@ -319,12 +305,17 @@ const App = () => {
                     handleUpdateCartQty
                   />
                 </Route>
-                <Route path="/register" exact>
-                 <Register/>
+                <Route exact path="/login">
+                  <Register                    
+                  />
                 </Route>
-                
-                  <Route path="/login" exact>
-                  <SignIn/>
+                <Route exact path="/signup">
+                  <LogInPage
+                  />
+                </Route>
+		<Route exact path="/addbook">
+                  <AddBook                    
+                  />
                 </Route>
               
                 
